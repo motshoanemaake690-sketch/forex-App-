@@ -2,15 +2,18 @@
 
 import dynamic from "next/dynamic";
 import { useState } from "react";
+import { useSession } from "next-auth/react";
 
 const Chart = dynamic(() => import("@/components/Chart"), { ssr: false });
 
 export default function DashboardPage() {
+  const { data } = useSession();
   const [symbol, setSymbol] = useState("EURUSD");
   const [timeframe, setTimeframe] = useState("1H");
 
   return (
     <main className="container py-6 space-y-6">
+      <h2 className="text-lg font-medium">Welcome{data?.user ? `, ${data.user.name || data.user.email}` : ""}</h2>
       <div className="flex flex-wrap items-center gap-3">
         <select
           value={symbol}

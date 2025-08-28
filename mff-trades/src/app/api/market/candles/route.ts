@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
 
 // NOTE: Replace this with real provider calls (e.g., OANDA, TwelveData, Alpha Vantage)
 // This route returns mock candles for now to make UI functional.
@@ -6,6 +8,8 @@ import { NextRequest, NextResponse } from "next/server";
 type Candle = { time: number; open: number; high: number; low: number; close: number };
 
 export async function GET(req: NextRequest) {
+  const session = await getServerSession(authOptions);
+  if (!session?.user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const { searchParams } = new URL(req.url);
   const symbol = searchParams.get("symbol") || "EURUSD";
   const tf = searchParams.get("tf") || "1H";

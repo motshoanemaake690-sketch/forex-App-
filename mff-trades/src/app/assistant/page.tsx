@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import useSWR from "swr";
 
 type Message = { role: "user" | "assistant"; content: string };
 
@@ -15,8 +14,8 @@ export default function AssistantPage() {
 
   async function send() {
     if (!input.trim()) return;
-    const nextMessages = [...messages, { role: "user", content: `(${pair}) ${input}` }];
-    setMessages(nextMessages);
+    const nextMessages: Message[] = [...messages, { role: "user", content: `(${pair}) ${input}` }];
+    setMessages(nextMessages as Message[]);
     setInput("");
     setLoading(true);
     try {

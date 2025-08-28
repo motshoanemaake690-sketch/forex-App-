@@ -1,9 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
 
 // Naive double top detection on provided candles
 type Candle = { time: number; open: number; high: number; low: number; close: number };
 
 export async function POST(req: NextRequest) {
+  const session = await getServerSession(authOptions);
+  if (!session?.user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const { candles } = await req.json();
   const alerts: { type: string; message: string; time: number }[] = [];
   if (Array.isArray(candles) && candles.length > 40) {
