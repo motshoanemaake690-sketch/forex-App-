@@ -8,6 +8,7 @@ export type MarketProvider = {
 
 export class AlphaVantageProvider implements MarketProvider {
   constructor(private readonly apiKey = process.env.ALPHA_VANTAGE_KEY) {}
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async getCandles({ symbol, timeframe, limit = 300 }: { symbol: string; timeframe: string; limit?: number }): Promise<Candle[]> {
     if (!this.apiKey) throw new Error("Missing ALPHA_VANTAGE_KEY");
     // TODO: Implement AV FX_INTRADAY calls and map to candles
@@ -17,6 +18,7 @@ export class AlphaVantageProvider implements MarketProvider {
 
 export class OandaProvider implements MarketProvider {
   constructor(private readonly apiKey = process.env.OANDA_API_KEY, private readonly accountId = process.env.OANDA_ACCOUNT_ID) {}
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async getCandles({ symbol, timeframe, limit = 300 }: { symbol: string; timeframe: string; limit?: number }): Promise<Candle[]> {
     if (!this.apiKey || !this.accountId) throw new Error("Missing OANDA credentials");
     // TODO: Implement OANDA candles endpoint
@@ -26,6 +28,7 @@ export class OandaProvider implements MarketProvider {
 
 export class TwelveDataProvider implements MarketProvider {
   constructor(private readonly apiKey = process.env.TWELVEDATA_KEY) {}
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async getCandles({ symbol, timeframe, limit = 300 }: { symbol: string; timeframe: string; limit?: number }): Promise<Candle[]> {
     if (!this.apiKey) throw new Error("Missing TWELVEDATA_KEY");
     // TODO: Implement TwelveData time series

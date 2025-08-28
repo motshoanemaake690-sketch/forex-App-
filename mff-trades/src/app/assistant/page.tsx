@@ -15,7 +15,7 @@ export default function AssistantPage() {
   async function send() {
     if (!input.trim()) return;
     const nextMessages: Message[] = [...messages, { role: "user", content: `(${pair}) ${input}` }];
-    setMessages(nextMessages as Message[]);
+    setMessages(nextMessages);
     setInput("");
     setLoading(true);
     try {
