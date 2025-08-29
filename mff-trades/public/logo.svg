@@ -1,0 +1,7 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="256" height="256" rx="28" fill="#0F2A55"/>
+  <path d="M48 160L92 104L128 144L176 80L208 112" stroke="white" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="208" cy="112" r="10" fill="#2F6DF6"/>
+  <text x="28" y="230" font-family="Inter, Arial" font-size="28" fill="#E6EDF6">MFF TRADES</text>
+</svg>
+

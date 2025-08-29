@@ -1,0 +1,10 @@
+{
+  "functions": {
+    "api/**": {
+      "maxDuration": 60
+    }
+  },
+  "buildCommand": "npm run vercel-build",
+  "outputDirectory": ".next"
+}
+

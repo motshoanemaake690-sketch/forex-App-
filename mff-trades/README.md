@@ -1,6 +1,6 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+MFF TRADES is a professional Forex analysis platform powered by AI.
 
-## Getting Started
+## Local Development
 
 First, run the development server:
 
@@ -14,7 +14,7 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
@@ -29,8 +29,21 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Deploy to Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1) Create a new project on Vercel and import this repository.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2) Environment Variables (Project Settings → Environment Variables):
+- DATABASE_URL = your Postgres connection string (Vercel Postgres/Neon/etc.)
+- NEXTAUTH_SECRET = a strong random string
+- OPENAI_API_KEY = your OpenAI key
+- (optional) ALPHA_VANTAGE_KEY, OANDA_API_KEY, OANDA_ACCOUNT_ID, TWELVEDATA_KEY
+
+3) Build Command
+Vercel runs the custom build command which pushes Prisma schema to Postgres and builds:
+```
+npm run vercel-build
+```
+
+4) After deploy
+Visit /auth/signin to create an account, then go to /dashboard.
